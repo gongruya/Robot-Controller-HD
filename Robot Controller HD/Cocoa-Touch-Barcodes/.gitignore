@@ -1,0 +1,11 @@
+.DS_Store
+Thumbs.db
+*.pbxuser
+*.perspectivev3
+*.modelv3
+*.mode1v3
+*.xcworkspace
+xcuserdata
+build/**
+build
+.hg
