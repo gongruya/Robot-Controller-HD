@@ -356,7 +356,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NjI-Oq-4ef">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="4ru-CY-i0W"/>
+                                    <constraint firstAttribute="height" constant="51" id="F8K-o3-3iU"/>
                                     <constraint firstAttribute="width" constant="162" id="JN5-c1-STR"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
@@ -379,6 +379,7 @@
                         <constraints>
                             <constraint firstItem="hh9-WI-KcM" firstAttribute="top" secondItem="fZb-0z-Sen" secondAttribute="top" constant="312" id="2wr-K8-Qu8"/>
                             <constraint firstAttribute="trailing" secondItem="Ozg-LZ-0KT" secondAttribute="trailing" constant="600" id="9O6-NW-jsa"/>
+                            <constraint firstItem="sY3-WE-nNt" firstAttribute="top" secondItem="fZb-0z-Sen" secondAttribute="top" constant="44" id="9vh-Iu-UNW"/>
                             <constraint firstItem="n1r-WG-3i1" firstAttribute="leading" secondItem="CvG-QY-YlD" secondAttribute="leading" type="default" id="DIR-uR-QJR"/>
                             <constraint firstItem="Ozg-LZ-0KT" firstAttribute="leading" secondItem="fZb-0z-Sen" secondAttribute="leading" constant="76" id="EVv-kl-NLk"/>
                             <constraint firstItem="sY3-WE-nNt" firstAttribute="leading" secondItem="mi2-TW-OlX" secondAttribute="leading" type="default" id="FJo-ar-ZdO"/>
@@ -398,7 +399,6 @@
                             <constraint firstAttribute="trailing" secondItem="HZk-Xg-N3Y" secondAttribute="trailing" constant="400" id="i2E-V1-chy"/>
                             <constraint firstItem="N1K-43-58w" firstAttribute="baseline" secondItem="mi2-TW-OlX" secondAttribute="baseline" type="default" id="maD-83-2yu"/>
                             <constraint firstAttribute="bottom" secondItem="Ozg-LZ-0KT" secondAttribute="bottom" constant="386" id="meP-fx-gN8"/>
-                            <constraint firstAttribute="bottom" secondItem="GfZ-cJ-pfL" secondAttribute="bottom" constant="26" id="ncH-pq-1eZ"/>
                             <constraint firstItem="sY3-WE-nNt" firstAttribute="leading" secondItem="fZb-0z-Sen" secondAttribute="leading" constant="114" id="oup-ca-wgJ"/>
                             <constraint firstItem="sY3-WE-nNt" firstAttribute="baseline" secondItem="BK2-Uj-2KI" secondAttribute="baseline" type="default" id="sQm-uI-KUY"/>
                             <constraint firstAttribute="trailing" secondItem="hh9-WI-KcM" secondAttribute="trailing" constant="125" id="t54-fJ-zhI"/>
