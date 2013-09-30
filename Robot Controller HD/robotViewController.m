@@ -320,7 +320,7 @@
 }
 
 /* 识别侧滑 */
-- (void)handleSwipe:(UISwipeGestureRecognizer *)gestureRecognizer {
+- (void)handleSwipeLeft:(UISwipeGestureRecognizer *)gestureRecognizer {
     NSLog(@"Swipe Left");
     if (mode > 1) {
         CGPoint locationTouch = [gestureRecognizer locationInView:self.view];
@@ -341,6 +341,57 @@
                 _DeleteBtn2.enabled = !_DeleteBtn2.enabled;
             }
         }
+    }
+}
+
+- (void)handleSwipeRight:(UISwipeGestureRecognizer *)gestureRecognizer {
+    NSLog(@"Swipe Right");
+    if (mode == 0 && AlreadyGot > 0) {
+        UInt8 SendSignal = 0;
+        CGPoint locationTouch = [gestureRecognizer locationInView:self.view];
+        if(CGRectContainsPoint(_InfoBg1.frame, locationTouch) && _Goods1Scanned.alpha == 0) {
+            NSLog(@"Info1");
+            [UIView animateWithDuration:0.5 animations:^{
+                _Goods1Scanned.alpha = 0.7;
+            }];
+            switch (AlreadyGot) {
+                case 1:
+                    SendSignal = SOCKET_SIG_GUIDE_CONTINUE_FIRST;
+                    break;
+                case 2:
+                    SendSignal = SOCKET_SIG_GUIDE_CONTINUE_SECOND;
+                    _SwitchModeBtn.enabled = YES;
+                {[UIView animateWithDuration:0.5 animations:^{
+                    _SwitchModeBtn.alpha = 1;
+                }];}
+                    break;
+                default:
+                    break;
+            }
+            [self SocketSend: [NSString stringWithFormat: @"%c", SendSignal]];
+        } else if (CGRectContainsPoint(_InfoBg2.frame, locationTouch)  && _Goods2Scanned.alpha == 0) {
+            NSLog(@"Info2");
+            [UIView animateWithDuration:0.5 animations:^{
+                _Goods2Scanned.alpha = 0.7;
+            }];
+            switch (AlreadyGot) {
+                case 1:
+                    SendSignal = SOCKET_SIG_GUIDE_CONTINUE_FIRST;
+                    break;
+                case 2:
+                    SendSignal = SOCKET_SIG_GUIDE_CONTINUE_SECOND;
+                    _SwitchModeBtn.enabled = YES;
+                {[UIView animateWithDuration:0.5 animations:^{
+                    _SwitchModeBtn.alpha = 1;
+                }];}
+                    break;
+                default:
+                    break;
+            }
+            [self SocketSend: [NSString stringWithFormat: @"%c", SendSignal]];
+        }
+        [_readerView stop];
+        _readerView.alpha = 0;
     }
 }
 
@@ -389,11 +440,16 @@
     
     _PayBtn.alpha = 0; _PayBtn.enabled = NO;
     //初始化手势
-    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(handleSwipe:)];
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(handleSwipeLeft:)];
     [swipeLeft setNumberOfTouchesRequired:1];
     [swipeLeft setDirection:UISwipeGestureRecognizerDirectionLeft];
     //[_InfoBg1 setUserInteractionEnabled:YES];
     [self.view addGestureRecognizer:swipeLeft];
+    
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(handleSwipeRight:)];
+    [swipeRight setNumberOfTouchesRequired:1];
+    [swipeRight setDirection:UISwipeGestureRecognizerDirectionRight];
+    [self.view addGestureRecognizer:swipeRight];
 }
 -(void)InitGoods {
     //初始化商品信息
@@ -437,14 +493,13 @@
     int GoodsID = 9999;
     NSString * barcode;
     Goods *g;
-    do {
-        for(ZBarSymbol *sym in syms) {
-            NSLog(@"%@", sym.data);
-            barcode = sym.data;
-            NSLog(@"%d", GoodsID = [self GetIDByBarcode: barcode]);
-            break;
-        }
-    } while (GoodsID <= 0 || GoodsID > 30);
+    for(ZBarSymbol *sym in syms) {
+        NSLog(@"%@", sym.data);
+        barcode = sym.data;
+        NSLog(@"%d", GoodsID = [self GetIDByBarcode: barcode]);
+        if (GoodsID > 0 && GoodsID <= 30) break;
+    }
+    
     
     g = [self GetObjByBarcode: barcode];
     if (mode == 1) {    //跟随模式

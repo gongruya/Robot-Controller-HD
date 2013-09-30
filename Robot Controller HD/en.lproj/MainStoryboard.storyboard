@@ -262,7 +262,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-74" y="-1302"/>
+            <point key="canvasLocation" x="-688" y="-1269"/>
         </scene>
         <!--Robot View Controller-->
         <scene sceneID="yd7-6p-tce">

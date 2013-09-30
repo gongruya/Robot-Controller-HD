@@ -15,7 +15,7 @@
 
 #import "GCDAsyncSocket.h"
 
-#define SOCKET_SERVER @"192.168.1.101"
+#define SOCKET_SERVER @"192.168.1.100"
 #define SOCKET_PORT 50000
 #define SOCKET_SIG_START_GUIDE 100
 #define SOCKET_SIG_GUIDE_GOT_FIRST 101          //READ
