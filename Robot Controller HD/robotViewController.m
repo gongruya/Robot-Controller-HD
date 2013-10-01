@@ -493,13 +493,15 @@
     int GoodsID = 9999;
     NSString * barcode;
     Goods *g;
-    for(ZBarSymbol *sym in syms) {
-        NSLog(@"%@", sym.data);
-        barcode = sym.data;
-        NSLog(@"%d", GoodsID = [self GetIDByBarcode: barcode]);
-        if (GoodsID > 0 && GoodsID <= 30) break;
-    }
-    
+    ZBarSymbol *sym;
+    do {
+        for(sym in syms) {
+            NSLog(@"%@", sym.data);
+            barcode = sym.data;
+            NSLog(@"%d", GoodsID = [self GetIDByBarcode: barcode]);
+            break;
+        }
+    } while (GoodsID <= 0 || GoodsID > 30);
     
     g = [self GetObjByBarcode: barcode];
     if (mode == 1) {    //跟随模式
