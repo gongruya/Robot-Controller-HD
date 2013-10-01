@@ -494,14 +494,14 @@
     NSString * barcode;
     Goods *g;
     ZBarSymbol *sym;
-    do {
-        for(sym in syms) {
-            NSLog(@"%@", sym.data);
-            barcode = sym.data;
-            NSLog(@"%d", GoodsID = [self GetIDByBarcode: barcode]);
-            break;
-        }
-    } while (GoodsID <= 0 || GoodsID > 30);
+    
+    for(sym in syms) {
+        NSLog(@"%@", sym.data);
+        barcode = sym.data;
+        NSLog(@"%d", GoodsID = [self GetIDByBarcode: barcode]);
+        break;
+    }
+    if (GoodsID <= 0 || GoodsID > 30) return;
     
     g = [self GetObjByBarcode: barcode];
     if (mode == 1) {    //跟随模式
