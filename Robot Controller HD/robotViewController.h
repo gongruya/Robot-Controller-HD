@@ -15,7 +15,7 @@
 
 #import "GCDAsyncSocket.h"
 
-#define SOCKET_SERVER @"192.168.1.106"
+#define SOCKET_SERVER @"192.168.1.101"
 #define SOCKET_PORT 50000
 #define SOCKET_SIG_START_GUIDE 100
 #define SOCKET_SIG_GUIDE_GOT_FIRST 101          //READ
@@ -47,6 +47,7 @@ int AlreadyGot = 0;
 - (IBAction)ConfirmButton2;
 - (IBAction)DeleteButton1;
 - (IBAction)DeleteButton2;
+- (IBAction)ConnectServer;
 
 @property (weak, nonatomic) IBOutlet UIButton *ConfirmBtn1;
 @property (weak, nonatomic) IBOutlet UIButton *ConfirmBtn2;

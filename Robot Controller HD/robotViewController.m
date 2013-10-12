@@ -280,6 +280,11 @@
     [self UpdatePrice];
 }
 
+- (IBAction)ConnectServer {
+    NSError *err = nil;
+    [socket connectToHost: SOCKET_SERVER onPort: SOCKET_PORT error:&err];
+}
+
 - (void) UpdatePrice {
     float price = 0;
     for (Goods *tmp in Cart) {
