@@ -281,6 +281,7 @@
 }
 
 - (IBAction)ConnectServer {
+    socket = [[GCDAsyncSocket alloc]initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
     NSError *err = nil;
     NSString *srv = @"192.168.1.";
     srv = [srv stringByAppendingString: _SocketServer.text];
@@ -414,7 +415,7 @@
 -(void)Initialization {
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     //socket init
-    socket = [[GCDAsyncSocket alloc]initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+    //socket = [[GCDAsyncSocket alloc]initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
     //socket.delegate = self;
     NSError *err = nil;
 /*    if(![socket connectToHost: SOCKET_SERVER onPort: SOCKET_PORT error:&err])
@@ -479,12 +480,12 @@
         22, 25, 20, 39, 25, 3.2, 60, 6.4, 3.5, 16, 37.5, 6.6, 13, 33, 5.2};
     
     NSArray *GoodsBarcode = [NSArray arrayWithObjects:
-                             @"6920152414019", @"6920476664183", @"6923644266066", @"6914973600041", @"6921168520015",
+                             @"6920152414019", @"6908198103807", @"6923644266066", @"6914973600041", @"6921168520015",
                              @"6927462214186", @"6911988006783", @"6902083880781", @"6902083881085", @"6911988009777",
-                             @"6921681167564", @"6917878131504", @"6920459905166", @"6931386400129", @"6917878027333",
+                             @"6921681107564", @"6917878020570", @"6920459905166", @"6931386400112", @"6917878027333",
                              @"6902088113112", @"6912003033111", @"4891338005692", @"6921899998084", @"6941326932009",
                              @"6930622800020", @"6949336011332", @"6921734917102", @"6940328702320", @"6945091706056",
-                             @"9787312029851", @"6925550576024", @"6921734903259", @"6939020420603", @"6903244984102", nil];
+                             @"9787312021428", @"6925550511032", @"6921734903075", @"6939020420663", @"6903244984102", nil];
     
     GoodsObjArray = [NSMutableArray arrayWithCapacity:30];
     Cart = [NSMutableArray arrayWithCapacity:4];
