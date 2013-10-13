@@ -282,7 +282,17 @@
 
 - (IBAction)ConnectServer {
     NSError *err = nil;
-    [socket connectToHost: SOCKET_SERVER onPort: SOCKET_PORT error:&err];
+    NSString *srv = @"192.168.1.";
+    srv = [srv stringByAppendingString: _SocketServer.text];
+    NSLog(@"%@", srv);
+    if(![socket connectToHost: srv onPort: SOCKET_PORT error:&err]) {
+        BtnPressed = -1;
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"网络错误" message:@"服务器连接失败" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        [alert show];
+        alert = nil;
+    } else {
+        [socket readDataWithTimeout:-1 tag:0];
+    }
 }
 
 - (void) UpdatePrice {
@@ -295,7 +305,7 @@
 }
 
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-
+    if (BtnPressed >= 0)
     switch (buttonIndex) {
         case 0:
             NSLog(@"Cancel Button Pressed");
@@ -416,9 +426,8 @@
         [self addText:@"打开端口"];
     }
 */
-    while (![socket connectToHost: SOCKET_SERVER onPort: SOCKET_PORT error:&err]);
-    
-    [socket readDataWithTimeout:-1 tag:0];
+//    if ([socket connectToHost: SOCKET_SERVER onPort: SOCKET_PORT error:&err])
+//        [socket readDataWithTimeout:-1 tag:0];
     
     //显示状态栏
     [[UIApplication sharedApplication]setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];

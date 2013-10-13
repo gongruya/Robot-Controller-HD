@@ -54,6 +54,7 @@ int AlreadyGot = 0;
 @property (weak, nonatomic) IBOutlet UIButton *DeleteBtn1;
 @property (weak, nonatomic) IBOutlet UIButton *DeleteBtn2;
 
+@property (weak, nonatomic) IBOutlet UITextField *SocketServer;
 
 @property (strong,nonatomic) NSArray * GoodsList;
 //存储列表数据
