@@ -35,6 +35,7 @@ NSMutableArray *Cart;
 NSUInteger GoodsSelected = 9999;
 int mode = 9999;
 int AlreadyGot = 0;
+NSString *srv;
 
 @interface robotViewController:UIViewController<UITableViewDelegate,UITableViewDataSource, ZBarReaderDelegate,UIAlertViewDelegate,UIGestureRecognizerDelegate>
 {

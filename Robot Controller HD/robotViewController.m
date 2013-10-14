@@ -283,7 +283,7 @@
 - (IBAction)ConnectServer {
     socket = [[GCDAsyncSocket alloc]initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
     NSError *err = nil;
-    NSString *srv = @"192.168.1.";
+    srv = @"192.168.1.";
     srv = [srv stringByAppendingString: _SocketServer.text];
     NSLog(@"%@", srv);
     if(![socket connectToHost: srv onPort: SOCKET_PORT error:&err]) {
@@ -474,7 +474,7 @@
                           @"金丝猴奶糖 118g袋装", @"雀巢脆脆鲨威化饼干", @"康师傅绿茶 550mL", @"黄山毛尖", @"雀巢咖啡罐装",
                           @"清扬男士去屑洗发露", @"天堂雨伞", @"黑人牙膏 90g", @"富光新太空杯 800ml ", @"小闹钟",
                           @"微波饭盒", @"双飞燕鼠标", @"科学计算器", @"英雄蓝色墨水", @"真彩中性笔芯20根装",
-                          @"《微积分学导论(下)》", @"笔记本", @"得力订书机", @"LED小台灯", @"心相印纸面巾", nil];
+                          @"《高等数学导论(下)》", @"笔记本", @"得力订书机", @"LED小台灯", @"心相印纸面巾", nil];
     BOOL goodsisfood[30] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
     float goodsprice[30] = {3.5, 2, 4.7, 6.8, 2.5, 14, 9, 3.5, 7, 2.9, 5.9, 23, 2.6, 33.89, 4,
         22, 25, 20, 39, 25, 3.2, 60, 6.4, 3.5, 16, 37.5, 6.6, 13, 33, 5.2};
@@ -645,6 +645,8 @@
     _StartFollowBtn.alpha = 0;
     _readerView.alpha = 1;
     [_readerView start];
+    NSError *err = nil;
+    [socket connectToHost: srv onPort: SOCKET_PORT error:&err];
     [self SocketSend:[NSString stringWithFormat:@"%c", SOCKET_SIG_START_FOLLOW]];
 }
 
