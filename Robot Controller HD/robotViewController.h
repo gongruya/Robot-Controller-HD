@@ -15,7 +15,7 @@
 
 #import "GCDAsyncSocket.h"
 
-#define SOCKET_SERVER @"192.168.1.101"
+#define SOCKET_SERVER @"192.168.1.102"
 #define SOCKET_PORT 50000
 #define SOCKET_SIG_START_GUIDE 100
 #define SOCKET_SIG_GUIDE_GOT_FIRST 101          //READ
@@ -35,7 +35,7 @@ NSMutableArray *Cart;
 NSUInteger GoodsSelected = 9999;
 int mode = 9999;
 int AlreadyGot = 0;
-NSString *srv;
+NSString *srv = nil;
 
 @interface robotViewController:UIViewController<UITableViewDelegate,UITableViewDataSource, ZBarReaderDelegate,UIAlertViewDelegate,UIGestureRecognizerDelegate>
 {

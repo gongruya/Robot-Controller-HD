@@ -86,6 +86,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view, typically from a nib.
     [self Initialization];
     if (!Initialized) {
@@ -417,7 +418,7 @@
     //socket init
     //socket = [[GCDAsyncSocket alloc]initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
     //socket.delegate = self;
-    NSError *err = nil;
+
 /*    if(![socket connectToHost: SOCKET_SERVER onPort: SOCKET_PORT error:&err])
     {
         [self addText:err.description];
@@ -632,6 +633,15 @@
 
 - (IBAction)StartFollow {
     mode = 1;
+
+    socket = [[GCDAsyncSocket alloc]initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+    NSError *err = nil;
+    NSLog(@"%@", srv);
+    [socket connectToHost: srv onPort: SOCKET_PORT error:&err];
+    [socket readDataWithTimeout:-1 tag:0];
+    
+    [self SocketSend:[NSString stringWithFormat:@"%c", SOCKET_SIG_START_FOLLOW]];
+    
     Goods *g = [Cart objectAtIndex: 0];
     _GoodsInfoText1.text = [NSString stringWithFormat:@"%@\n-------------------------------\n%@\n价格：%.2f元\n", [g getName], (([g getIsFood])?(@"食   品"):(@"学习生活用品")), [g getPrice]];
     _GoodsImage1.image = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg", [g getID]]];
@@ -645,9 +655,6 @@
     _StartFollowBtn.alpha = 0;
     _readerView.alpha = 1;
     [_readerView start];
-    NSError *err = nil;
-    [socket connectToHost: srv onPort: SOCKET_PORT error:&err];
-    [self SocketSend:[NSString stringWithFormat:@"%c", SOCKET_SIG_START_FOLLOW]];
 }
 
 - (IBAction)Pay {
