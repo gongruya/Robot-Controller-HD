@@ -232,7 +232,7 @@
                                     <action selector="ConnectServer" destination="2" eventType="touchUpInside" id="hOw-Bk-Bhy"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="109" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZpE-Od-1IS">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="101" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZpE-Od-1IS">
                                 <rect key="frame" x="131" y="38" width="39" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -517,6 +517,8 @@
     </scenes>
     <resources>
         <image name="deletebtn.png" width="47" height="24"/>
+        <image name="deletebtn.png" width="47" height="24"/>
+        <image name="ok.png" width="200" height="200"/>
         <image name="ok.png" width="200" height="200"/>
         <image name="shopping-basket.png" width="30" height="30"/>
     </resources>
