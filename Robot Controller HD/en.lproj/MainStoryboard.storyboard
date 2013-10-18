@@ -517,8 +517,6 @@
     </scenes>
     <resources>
         <image name="deletebtn.png" width="47" height="24"/>
-        <image name="deletebtn.png" width="47" height="24"/>
-        <image name="ok.png" width="200" height="200"/>
         <image name="ok.png" width="200" height="200"/>
         <image name="shopping-basket.png" width="30" height="30"/>
     </resources>

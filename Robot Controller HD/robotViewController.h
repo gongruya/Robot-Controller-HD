@@ -14,6 +14,7 @@
 #import "Cocoa-Touch-Barcodes/UIImage-NKDBarcode.h"
 
 #import "GCDAsyncSocket.h"
+#import "MBProgressHUD.h"
 
 #define SOCKET_SERVER @"192.168.1.102"
 #define SOCKET_PORT 50000
@@ -39,7 +40,7 @@ NSString *srv = nil;
 
 @interface robotViewController:UIViewController<UITableViewDelegate,UITableViewDataSource, ZBarReaderDelegate,UIAlertViewDelegate,UIGestureRecognizerDelegate>
 {
-
+    MBProgressHUD *HUD;
 }
 
 @property(strong)  GCDAsyncSocket *socket;

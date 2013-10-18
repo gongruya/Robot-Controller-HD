@@ -86,8 +86,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
 	// Do any additional setup after loading the view, typically from a nib.
+    
     [self Initialization];
     if (!Initialized) {
         Initialized = YES;
@@ -519,6 +520,9 @@
     }
     if (GoodsID <= 0 || GoodsID > 30) return;
     
+    AudioServicesPlaySystemSound(1007);         //Scanned successful
+    [self HUD_success: @"扫描成功"];
+    
     g = [self GetObjByBarcode: barcode];
     if (mode == 1) {    //跟随模式
         ++AlreadyGot;
@@ -601,16 +605,20 @@
         case SOCKET_SIG_GUIDE_GOT_FIRST:
             //GoodsGot = [newMessage characterAtIndex:1];
             //处理已找到
+            AudioServicesPlaySystemSound(1008);
             AlreadyGot = 1;
             _readerView.alpha = 1;
             [_readerView start];
+            [self HUD_success: @"已找到商品 请扫描条码确认"];
             break;
         case SOCKET_SIG_GUIDE_GOT_SECOND:
             //GoodsGot = [newMessage characterAtIndex:1];
             //处理已找到
+            AudioServicesPlaySystemSound(1008);
             AlreadyGot = 2;
             _readerView.alpha = 1;
             [_readerView start];
+            [self HUD_success: @"已找到商品 请扫描条码确认"];
             break;
         default:
             break;
@@ -661,5 +669,20 @@
     [self SocketSend:[NSString stringWithFormat: @"%c", SOCKET_SIG_PAY]];
     _PayBtn.alpha = 0.7;
     _PayBtn.enabled = NO;
+}
+
+- (void) HUD_success:(NSString *)text {
+    
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    HUD.labelText = text;
+    HUD.mode = MBProgressHUDModeCustomView;
+    HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Checkmark"]];
+    [HUD showAnimated:YES whileExecutingBlock:^{
+        sleep(2);
+    } completionBlock:^{
+        [HUD removeFromSuperview];
+        HUD = nil;
+    }];
 }
 @end

@@ -111,6 +111,10 @@
 		44DCE08817C63F7600824FC5 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 44DCE08717C63F7600824FC5 /* Default-Landscape~ipad.png */; };
 		44E596F717C8C93D00F28509 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E596F417C8C93D00F28509 /* GCDAsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		44E596F817C8C93D00F28509 /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E596F617C8C93D00F28509 /* GCDAsyncUdpSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		44EACFEF18119DAA00E46E80 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44EACFEE18119DAA00E46E80 /* AudioToolbox.framework */; };
+		44EACFF21811A74A00E46E80 /* Checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 44EACFF01811A74A00E46E80 /* Checkmark.png */; };
+		44EACFF31811A74A00E46E80 /* Checkmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44EACFF11811A74A00E46E80 /* Checkmark@2x.png */; };
+		44EACFF61811A80500E46E80 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 44EACFF51811A80500E46E80 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -246,6 +250,11 @@
 		44E596F417C8C93D00F28509 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		44E596F517C8C93D00F28509 /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
 		44E596F617C8C93D00F28509 /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		44EACFEE18119DAA00E46E80 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		44EACFF01811A74A00E46E80 /* Checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Checkmark.png; path = "Robot Controller HD/images/Checkmark.png"; sourceTree = "<group>"; };
+		44EACFF11811A74A00E46E80 /* Checkmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Checkmark@2x.png"; path = "Robot Controller HD/images/Checkmark@2x.png"; sourceTree = "<group>"; };
+		44EACFF41811A80500E46E80 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		44EACFF51811A80500E46E80 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +267,7 @@
 				4461552C17C49BFD00BC1848 /* Foundation.framework in Frameworks */,
 				4461552E17C49BFD00BC1848 /* CoreGraphics.framework in Frameworks */,
 				44856A8C17C4ED3300AA737A /* MessageUI.framework in Frameworks */,
+				44EACFEF18119DAA00E46E80 /* AudioToolbox.framework in Frameworks */,
 				44856A8E17C4ED5700AA737A /* QuartzCore.framework in Frameworks */,
 				44856ADF17C4EFCD00AA737A /* AVFoundation.framework in Frameworks */,
 				44856AE217C4EFF800AA737A /* CoreMedia.framework in Frameworks */,
@@ -296,6 +306,7 @@
 				44856AE417C4F04100AA737A /* libiconv.dylib */,
 				44856B8C17C50BF300AA737A /* libzbar.a */,
 				44856BE717C51B7200AA737A /* libCocoaTouchBarcodes.a */,
+				44EACFEE18119DAA00E46E80 /* AudioToolbox.framework */,
 				444182F617C8893200AA9987 /* CFNetwork.framework */,
 				44856AE017C4EFF800AA737A /* CoreMedia.framework */,
 				44856AE117C4EFF800AA737A /* CoreVideo.framework */,
@@ -320,6 +331,8 @@
 				44E596F517C8C93D00F28509 /* GCDAsyncUdpSocket.h */,
 				44E596F617C8C93D00F28509 /* GCDAsyncUdpSocket.m */,
 				4461554117C49BFD00BC1848 /* MainStoryboard.storyboard */,
+				44EACFF41811A80500E46E80 /* MBProgressHUD.h */,
+				44EACFF51811A80500E46E80 /* MBProgressHUD.m */,
 				4461554417C49BFD00BC1848 /* robotViewController.h */,
 				4461554517C49BFD00BC1848 /* robotViewController.m */,
 				4461553017C49BFD00BC1848 /* Supporting Files */,
@@ -342,6 +355,8 @@
 		44856AE617C4F3FA00AA737A /* images */ = {
 			isa = PBXGroup;
 			children = (
+				44EACFF01811A74A00E46E80 /* Checkmark.png */,
+				44EACFF11811A74A00E46E80 /* Checkmark@2x.png */,
 				44C9F2FB17CC9719007D60CE /* ok.png */,
 				441C8D9317C7CFBA00C061F5 /* deletebtn.png */,
 				44DCE08717C63F7600824FC5 /* Default-Landscape~ipad.png */,
@@ -582,8 +597,10 @@
 				44B133F717C60DB90068B828 /* cloud-upload.png in Resources */,
 				44B133F817C60DB90068B828 /* cloud.png in Resources */,
 				44B133F917C60DB90068B828 /* delete.png in Resources */,
+				44EACFF21811A74A00E46E80 /* Checkmark.png in Resources */,
 				44B133FA17C60DB90068B828 /* down-arrow.png in Resources */,
 				44B133FB17C60DB90068B828 /* download-tray.png in Resources */,
+				44EACFF31811A74A00E46E80 /* Checkmark@2x.png in Resources */,
 				44B133FC17C60DB90068B828 /* email.png in Resources */,
 				44B133FD17C60DB90068B828 /* favorite-bookmark.png in Resources */,
 				44B133FE17C60DB90068B828 /* favorite.png in Resources */,
@@ -663,6 +680,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4461553617C49BFD00BC1848 /* main.m in Sources */,
+				44EACFF61811A80500E46E80 /* MBProgressHUD.m in Sources */,
 				4461553A17C49BFD00BC1848 /* robotAppDelegate.m in Sources */,
 				4461554617C49BFD00BC1848 /* robotViewController.m in Sources */,
 				44E596F717C8C93D00F28509 /* GCDAsyncSocket.m in Sources */,
