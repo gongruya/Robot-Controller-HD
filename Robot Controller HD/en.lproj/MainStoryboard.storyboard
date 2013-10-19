@@ -232,7 +232,7 @@
                                     <action selector="ConnectServer" destination="2" eventType="touchUpInside" id="hOw-Bk-Bhy"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="101" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZpE-Od-1IS">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="102" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZpE-Od-1IS">
                                 <rect key="frame" x="131" y="38" width="39" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
@@ -361,7 +361,7 @@
             <objects>
                 <viewController id="qdZ-yu-jE3" customClass="robotViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cH2-Q7-JiL">
-                        <rect key="frame" x="0.0" y="20" width="768" height="2464"/>
+                        <rect key="frame" x="0.0" y="20" width="768" height="2504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Debug Mode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1d-4W-mcm">
@@ -677,6 +677,8 @@
     </scenes>
     <resources>
         <image name="deletebtn.png" width="47" height="24"/>
+        <image name="deletebtn.png" width="47" height="24"/>
+        <image name="ok.png" width="200" height="200"/>
         <image name="ok.png" width="200" height="200"/>
         <image name="shopping-basket.png" width="30" height="30"/>
     </resources>
