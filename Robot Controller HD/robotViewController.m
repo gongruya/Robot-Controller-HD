@@ -630,6 +630,7 @@
 
 - (IBAction)StartGuide {
     mode = 0;
+    [self HUD_loading: @"导购已开始 请跟随机器人"];
     _DeleteBtn2.enabled = NO;
     [UIView animateWithDuration:0.5 animations:^{
         _DeleteBtn2.alpha = 0;
@@ -671,7 +672,7 @@
     _PayBtn.enabled = NO;
 }
 
-- (void) HUD_success:(NSString *)text {
+- (void) HUD_success: (NSString *)text {
     
     HUD = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:HUD];
@@ -684,5 +685,36 @@
         [HUD removeFromSuperview];
         HUD = nil;
     }];
+}
+- (void) HUD_loading: (NSString *)text {
+    //初始化进度框，置于当前的View当中
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    
+    //如果设置此属性则当前的view置于后台
+    HUD.dimBackground = YES;
+    
+    //设置对话框文字
+    HUD.labelText = text;
+    
+    //显示对话框
+    [HUD showAnimated:YES whileExecutingBlock:^{
+        //对话框显示时需要执行的操作
+        sleep(3);
+    } completionBlock:^{
+        //操作执行完后取消对话框
+        [HUD removeFromSuperview];
+
+        HUD = nil;
+    }];
+}
+- (IBAction)DebugSocketSend {
+    NSArray *arr = [_DebugSocketText.text componentsSeparatedByString: @" "];
+    NSString *s = nil;
+    for (NSString *i in arr) {
+        [s stringByAppendingFormat: @"%d", [i intValue]];
+        NSLog(@"%@", i);
+    }
+    [self SocketSend: s];
 }
 @end

@@ -97,6 +97,11 @@ NSString *srv = nil;
 - (IBAction)Pay;
 @property (weak, nonatomic) IBOutlet UIButton *PayBtn;
 
+
+@property (weak, nonatomic) IBOutlet UITextField *DebugSocketText;
+- (IBAction)DebugSocketSend;
+
+
 @end
 //END of VIEWCONTROLLER
 
