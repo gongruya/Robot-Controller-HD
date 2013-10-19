@@ -93,6 +93,12 @@
     if (!Initialized) {
         Initialized = YES;
         [self InitGoods];
+    } else {
+        socket = [[GCDAsyncSocket alloc]initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+        NSError *err = nil;
+        NSLog(@"%@", srv);
+        [socket connectToHost: srv onPort: SOCKET_PORT error:&err];
+        [socket readDataWithTimeout:-1 tag:0];
     }
 /*
     NSDate *mydate=[NSDate date];
@@ -642,12 +648,6 @@
 
 - (IBAction)StartFollow {
     mode = 1;
-
-    socket = [[GCDAsyncSocket alloc]initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
-    NSError *err = nil;
-    NSLog(@"%@", srv);
-    [socket connectToHost: srv onPort: SOCKET_PORT error:&err];
-    [socket readDataWithTimeout:-1 tag:0];
     
     [self SocketSend:[NSString stringWithFormat:@"%c", SOCKET_SIG_START_FOLLOW]];
     
@@ -710,11 +710,21 @@
 }
 - (IBAction)DebugSocketSend {
     NSArray *arr = [_DebugSocketText.text componentsSeparatedByString: @" "];
-    NSString *s = nil;
+    NSString *s = @"";
+    NSLog(@"%@", arr);
     for (NSString *i in arr) {
-        [s stringByAppendingFormat: @"%d", [i intValue]];
-        NSLog(@"%@", i);
+        s = [s stringByAppendingFormat: @"%c", [i intValue]];
+        NSLog(@"%@", s);
     }
     [self SocketSend: s];
+}
+
+- (IBAction)QuickConnect {
+    socket = [[GCDAsyncSocket alloc]initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
+    NSError *err = nil;
+    NSLog(@"%@", srv);
+    [socket connectToHost: srv onPort: SOCKET_PORT error:&err];
+    [socket readDataWithTimeout:-1 tag:0];
+
 }
 @end

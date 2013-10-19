@@ -100,6 +100,7 @@ NSString *srv = nil;
 
 @property (weak, nonatomic) IBOutlet UITextField *DebugSocketText;
 - (IBAction)DebugSocketSend;
+- (IBAction)QuickConnect;
 
 
 @end
