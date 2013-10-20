@@ -482,7 +482,7 @@
 }
 -(void)InitGoods {
     //初始化商品信息
-    NSArray *GoodsName = [NSArray arrayWithO≥bjects:
+    NSArray *GoodsName = [NSArray arrayWithObjects:
                           @"康师傅红烧牛肉面", @"可口可乐罐装", @"蒙牛特仑苏牛奶", @"德芙黑巧克力 43克", @"农夫山泉矿泉水 1.5L",
                           @"金锣肉颗粒多", @"达利园蛋黄派", @"娃哈哈八宝粥", @"娃哈哈AD钙奶 220g*4瓶", @"好吃点香脆腰果饼干",
                           @"金丝猴奶糖 118g袋装", @"雀巢脆脆鲨威化饼干", @"康师傅绿茶 550mL", @"黄山毛尖", @"雀巢咖啡罐装",
