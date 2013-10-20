@@ -99,8 +99,10 @@ NSString *srv = nil;
 
 
 @property (weak, nonatomic) IBOutlet UITextField *DebugSocketText;
+@property (weak, nonatomic) IBOutlet UITextField *DebugFollowID;
 - (IBAction)DebugSocketSend;
 - (IBAction)QuickConnect;
+- (IBAction)DebugSelectFollow;
 
 
 @end

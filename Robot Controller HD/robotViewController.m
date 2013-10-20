@@ -76,7 +76,13 @@
     for (Goods *a in GoodsObjArray)
         if ([[a getBarcode] isEqualToString:Barcode])
             return a;
-    return 0;
+    return nil;
+}
+- (Goods *) GetObjByID: (UInt8) ID {
+    for (Goods *a in GoodsObjArray)
+        if ([a getID] == ID)
+            return a;
+    return nil;
 }
 - (void) viewWillDisappear: (BOOL) animated
 {
@@ -476,7 +482,7 @@
 }
 -(void)InitGoods {
     //初始化商品信息
-    NSArray *GoodsName = [NSArray arrayWithObjects:
+    NSArray *GoodsName = [NSArray arrayWithO≥bjects:
                           @"康师傅红烧牛肉面", @"可口可乐罐装", @"蒙牛特仑苏牛奶", @"德芙黑巧克力 43克", @"农夫山泉矿泉水 1.5L",
                           @"金锣肉颗粒多", @"达利园蛋黄派", @"娃哈哈八宝粥", @"娃哈哈AD钙奶 220g*4瓶", @"好吃点香脆腰果饼干",
                           @"金丝猴奶糖 118g袋装", @"雀巢脆脆鲨威化饼干", @"康师傅绿茶 550mL", @"黄山毛尖", @"雀巢咖啡罐装",
@@ -484,8 +490,12 @@
                           @"微波饭盒", @"双飞燕鼠标", @"科学计算器", @"英雄蓝色墨水", @"真彩中性笔芯20根装",
                           @"《高等数学导论(下)》", @"笔记本", @"得力订书机", @"LED小台灯", @"心相印纸面巾", nil];
     BOOL goodsisfood[30] = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-    float goodsprice[30] = {3.5, 2, 4.7, 6.8, 2.5, 14, 9, 3.5, 7, 2.9, 5.9, 23, 2.6, 33.89, 4,
-        22, 25, 20, 39, 25, 3.2, 60, 6.4, 3.5, 16, 37.5, 6.6, 13, 33, 5.2};
+    float goodsprice[30] = {3.5, 2, 4.7, 6.8, 2.5,
+                            14, 9, 3.5, 7, 2.9,
+                            5.9, 23, 2.6, 33.89, 4,
+                            22, 25, 20, 39, 25,
+                            3.2, 60, 6.4, 3.5, 16,
+                            37.5, 6.6, 13, 33, 5.2};
     
     NSArray *GoodsBarcode = [NSArray arrayWithObjects:
                              @"6920152414019", @"6908198103807", @"6923644266066", @"6914973600041", @"6921168520015",
@@ -544,7 +554,11 @@
 
                 {[UIView animateWithDuration:1 animations:^{
                     _GoodsInfoText3.alpha = _GoodsImage3.alpha = 1;
+                    _GoodsInfoText1.alpha = _GoodsImage1.alpha = _GoodsInfoText2.alpha = _GoodsImage2.alpha = _PayBtn.alpha = 1;                //新规则 只跟随1个
                 }];}
+                [_readerView stop];          //新规则 只跟随1个
+                _readerView.alpha = 0;       //新规则 只跟随1个
+                _PayBtn.enabled = YES;       //新规则 只跟随1个
                 break;
             case 4:
                 _GoodsInfoText4.text = msgtext;
@@ -648,7 +662,7 @@
 
 - (IBAction)StartFollow {
     mode = 1;
-    
+    AlreadyGot = 2;
     [self SocketSend:[NSString stringWithFormat:@"%c", SOCKET_SIG_START_FOLLOW]];
     
     Goods *g = [Cart objectAtIndex: 0];
@@ -726,5 +740,46 @@
     [socket connectToHost: srv onPort: SOCKET_PORT error:&err];
     [socket readDataWithTimeout:-1 tag:0];
 
+}
+
+- (IBAction)DebugSelectFollow {
+    UInt8 GoodsID = [_DebugFollowID.text intValue];
+    Goods *g = [self GetObjByID: GoodsID];
+    NSLog(@"%d", GoodsID);
+    if (g) {
+        [self SocketSend: [NSString stringWithFormat: @"%c%c", SOCKET_SIG_FOLLOW_GOT, GoodsID]];
+        ++AlreadyGot;
+        NSLog(@"%d", AlreadyGot);
+        [Cart addObject: g];
+        [self UpdatePrice];
+        NSString *msgtext = [NSString stringWithFormat:@"%@\n-------------------------------\n%@\n价格：%.2f元\n", [g getName], (([g getIsFood])?(@"食   品"):(@"学习生活用品")), [g getPrice]];
+        UIImage *img = [UIImage imageNamed:[NSString stringWithFormat:@"%d.jpg", GoodsID]];
+        switch (AlreadyGot) {
+            case 3:
+                _GoodsInfoText3.text = msgtext;
+                _GoodsImage3.image = img;
+            
+            {[UIView animateWithDuration:1 animations:^{
+                _GoodsInfoText3.alpha = _GoodsImage3.alpha = 1;
+                _GoodsInfoText1.alpha = _GoodsImage1.alpha = _GoodsInfoText2.alpha = _GoodsImage2.alpha = _PayBtn.alpha = 1;                //新规则 只跟随1个
+            }];}
+                [_readerView stop];          //新规则 只跟随1个
+                _readerView.alpha = 0;       //新规则 只跟随1个
+                _PayBtn.enabled = YES;       //新规则 只跟随1个
+                break;
+            case 4:
+                _GoodsInfoText4.text = msgtext;
+                _GoodsImage4.image = img;
+                _PayBtn.enabled = YES;
+                _readerView.alpha = 0;
+            {[UIView animateWithDuration:1 animations:^{
+                _GoodsInfoText4.alpha = _GoodsImage4.alpha = _GoodsInfoText1.alpha = _GoodsImage1.alpha = _GoodsInfoText2.alpha = _GoodsImage2.alpha = _PayBtn.alpha = 1;
+            }];}
+                [_readerView stop];
+                break;
+            default:
+                break;
+        }
+    }
 }
 @end
