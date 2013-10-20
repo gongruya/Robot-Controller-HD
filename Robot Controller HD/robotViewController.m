@@ -663,6 +663,7 @@
 - (IBAction)StartFollow {
     mode = 1;
     AlreadyGot = 2;
+    [self HUD_loading: @"请将机器人带至商品处扫描条码"];
     [self SocketSend:[NSString stringWithFormat:@"%c", SOCKET_SIG_START_FOLLOW]];
     
     Goods *g = [Cart objectAtIndex: 0];
